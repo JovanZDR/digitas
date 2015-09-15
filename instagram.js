@@ -32,13 +32,7 @@ $(function() {
 
 
           }
-          var minId = data.pagination.min_tag_id;
-          console.log("minId",minId);
-          $(".instGallery").append("<button class='refresh'>refresh page</button>");
-          $("button.refresh").click(function() {
-  
-              getNextPage(minId);
-            });
+          
 
 
           console.log("info",data);
@@ -68,12 +62,7 @@ $(function() {
               getNextPage( maxId);
             });
           }
-          var minId = data.pagination.min_tag_id;
-          console.log("minId",minId);
-          $(".instGallery").append("<button class='refresh'>refresh page</button>");
-          $("button.refresh").click(function() {
-              getNextPage(minId);
-            });
+          
           console.log("pagination",data.pagination);
           
           console.log("maxId",data.pagination.next_max_id);
