@@ -1,19 +1,20 @@
 $(function() {
 
       var limit = 20;
-      var tag = "tenis";
+      var tag = "novak";
+          
 
       function getNextPage(nextId) {
+
         $('.instGallery').html("");
         console.log("nextId",nextId);
         
         $.ajax({
-        url:"https://api.instagram.com/v1/tags/my_tag/media/recent?client_id=c1302f417cda4e09968eaec958fe0ae2&max_tag_id="+nextId+"",
+        url:"https://api.instagram.com/v1/tags/"+tag+"/media/recent?client_id=c1302f417cda4e09968eaec958fe0ae2&max_tag_id="+nextId+"",
         dataType:"jsonp",
         type:"get",
         success: function(data) {
-          
-          console.log("nextUrl",maxId);
+
           for (var i = 0; i < limit; i++) {
             var imgLink = data.data[i].images.low_resolution.url;
             $(".instGallery").append("<div class='col-xs-6 col-md-3'><img class = 'img-responsive' src='" + imgLink +"'/></div>");
