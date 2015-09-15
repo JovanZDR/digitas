@@ -1,29 +1,30 @@
 $(function() {
 
       var limit = 20;
-      var tag = "sport";
+      var tag = "tenis";
 
-      function getNextPage(nextUrl) {
+      function getNextPage(nextId) {
         $('.instGallery').html("");
+        console.log("nextId",nextId);
         
         $.ajax({
-        url:nextUrl,
-        dataType:"json",
+        url:"https://api.instagram.com/v1/tags/my_tag/media/recent?client_id=c1302f417cda4e09968eaec958fe0ae2&max_tag_id="+nextId+"",
+        dataType:"jsonp",
         type:"get",
         success: function(data) {
-          var nextPage = data.pagination.next_url;
-          console.log("nextUrl",nextPage);
+          
+          console.log("nextUrl",maxId);
           for (var i = 0; i < limit; i++) {
             var imgLink = data.data[i].images.low_resolution.url;
             $(".instGallery").append("<div class='col-xs-6 col-md-3'><img class = 'img-responsive' src='" + imgLink +"'/></div>");
             console.log("imgLink",imgLink);
           }
-          var nextPage = data.pagination.next_url;
-          console.log("nextUrl",nextPage);
-          if(nextPage) {
+          var maxId = data.pagination.next_max_id;
+          console.log("nextUrl",data.pagination.next_max_id);
+          if(maxId) {
             $(".instGallery").append("<button>nextPage</button>");
             $("button").click(function() {
-              getNextPage(nextPage);
+              getNextPage(maxId);
             });
           }
 
@@ -47,13 +48,15 @@ $(function() {
             $(".instGallery").append("<div class='col-xs-6 col-md-3 thumbnail'><img class = 'img-responsive' src='" + imgLink +"'/></div>");
             console.log("imgLink",imgLink);
           }
-          var nextPage = data.pagination.next_url;
-          $(".instGallery").append("<button><a href='"+nextPage+"'>nextPage</a></button>");
+          maxId = data.pagination.next_max_id;
+          
+          $(".instGallery").append("<button>next page</button>");
           $("button").click(function(){
-            getNextPage(nextPage);
+            getNextPage(maxId);
           });
           console.log("pagination",data.pagination);
-         
+          
+          console.log("maxId",data.pagination.next_max_id);
 
           console.log("info",data);
         },
