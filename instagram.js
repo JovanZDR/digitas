@@ -4,7 +4,7 @@ $(function() {
       var tag = "novak";
       var id = "max_tag_id";
 
-      function getNextPage(id, nextId) {
+      function getNextPage(nextId) {
 
         $('.instGallery').html("");
         console.log("nextId",nextId);
@@ -25,19 +25,19 @@ $(function() {
           if(maxId) {
             $(".instGallery").append("<button>nextPage</button>");
             $("button").click(function() {
-              var id = "max_tag_id";
-              getNextPage(id, maxId);
+
+              getNextPage(maxId);
             });
          
 
 
           }
-           var minId = data.pagination.min_tag_id;
+          var minId = data.pagination.min_tag_id;
           console.log("minId",minId);
           $(".instGallery").append("<button class='refresh'>refresh page</button>");
           $("button.refresh").click(function() {
-              var id = "min_tag_id";
-              getNextPage(id, maxId);
+  
+              getNextPage(minId);
             });
 
 
@@ -65,15 +65,14 @@ $(function() {
           if (maxId) {
             $(".instGallery").append("<button>next page</button>");
             $("button").click(function(){
-              getNextPage(maxId);
+              getNextPage( maxId);
             });
           }
           var minId = data.pagination.min_tag_id;
           console.log("minId",minId);
           $(".instGallery").append("<button class='refresh'>refresh page</button>");
           $("button.refresh").click(function() {
-              var id = "min_tag_id";
-              getNextPage(id, maxId);
+              getNextPage(minId);
             });
           console.log("pagination",data.pagination);
           
