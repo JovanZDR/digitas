@@ -9,7 +9,7 @@ $(function() {
   // get new images
   function getNextPage(nextId) {
 
-    // check if the particular id (next_url) is sent as a argument
+    // check if the particular id (next_url) is sent as an argument
     console.log("nextId",nextId);
 
     //empty the div element

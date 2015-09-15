@@ -1,0 +1,2 @@
+I started with angular and had a problem to get the pagination data from the instagram api. After many  trials with $http and $resourse I decided to change to javascript and ajax. Some time that went "to waste" on that.
+I fixed basic functionality to get the images and set the next set of images. I am working on simplifying the code(to eleminate repeating code and to set a logical and well concepualized structure).
